@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/api/">
+    <Project Path="src/api/SaglikAsistanim.API/SaglikAsistanim.API.csproj" />
+  </Folder>
+  <Folder Name="/src/core/">
+    <Project Path="src/core/SaglikAsistanim.Application/SaglikAsistanim.Application.csproj" />
+    <Project Path="src/core/SaglikAsistanim.Domain/SaglikAsistanim.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/infrastructure/">
+    <Project Path="src/infrastructure/SaglikAsistanim.Caching/SaglikAsistanim.Caching.csproj" />
+    <Project Path="src/infrastructure/SaglikAsistanim.Identity/SaglikAsistanim.Identity.csproj" />
+    <Project Path="src/infrastructure/SaglikAsistanim.Logging/SaglikAsistanim.Logging.csproj" />
+    <Project Path="src/infrastructure/SaglikAsistanim.Persistence/SaglikAsistanim.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
