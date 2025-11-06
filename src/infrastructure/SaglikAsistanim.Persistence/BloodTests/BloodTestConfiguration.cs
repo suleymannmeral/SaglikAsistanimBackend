@@ -13,6 +13,14 @@ public sealed class BloodTestConfiguration : IEntityTypeConfiguration<BloodTest>
 {
     public void Configure(EntityTypeBuilder<BloodTest> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(b => b.Id);
+        builder.Property(b => b.UserId).IsRequired();
+        builder.Property(b => b.FilePath)
+               .IsRequired()
+               .HasMaxLength(500);
+        builder.Property(b => b.UploadedAt).IsRequired();
+        builder.Property(b => b.AnalysisResult)
+               .HasColumnName("Text").IsRequired();
+
     }
 }
