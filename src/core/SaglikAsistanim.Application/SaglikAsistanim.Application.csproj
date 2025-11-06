@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SaglikAsistanim.Domain\SaglikAsistanim.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

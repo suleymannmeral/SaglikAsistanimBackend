@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\SaglikAsistanim.Application\SaglikAsistanim.Application.csproj" />
+    <ProjectReference Include="..\..\core\SaglikAsistanim.Domain\SaglikAsistanim.Domain.csproj" />
+    <ProjectReference Include="..\SaglikAsistanim.Identity\SaglikAsistanim.Identity.csproj" />
+  </ItemGroup>
+
 </Project>
