@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaglikAsistanim.Domain.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaglikAsistanim.Domain.Entities;
 
-public sealed class BloodTestValue
+public sealed class BloodTestValue:BaseEntity<int>
 {
     public int BloodTestId { get; set; }
     public string TestName { get; set; } = string.Empty;   // Örn: “Glukoz”

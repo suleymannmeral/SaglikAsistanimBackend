@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SaglikAsistanim.Domain.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SaglikAsistanim.Domain.Entities;
 
-public sealed class Medication
+public sealed class Medication:BaseEntity<int>
 {
     public int UserId { get; set; }
     public string DrugName { get; set; } = string.Empty;
