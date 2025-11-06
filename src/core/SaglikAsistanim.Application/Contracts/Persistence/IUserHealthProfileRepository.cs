@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace SaglikAsistanim.Application.Contracts.Persistence;
 
-public interface IUserHealthRepository:IGenericRepository<UserHealth,int>
+public interface IUserHealthProfileRepository:IGenericRepository<UserHealthProfile,int>
 {
 }

@@ -29,7 +29,7 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<Applicat
     public DbSet<HealthReport> HealthReports { get; set; } = null!;
     public DbSet<Measurement> Measurements { get; set; } = null!;
     public DbSet<Medication> Medications { get; set; } = null!;
-    public DbSet<UserHealth> UserHealths { get; set; } = null!;
+    public DbSet<UserHealthProfile> UserHealthProfiles { get; set; } = null!;
 
 
 

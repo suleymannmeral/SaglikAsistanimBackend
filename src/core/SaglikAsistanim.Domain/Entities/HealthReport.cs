@@ -9,7 +9,7 @@ namespace SaglikAsistanim.Domain.Entities;
 
 public sealed class HealthReport:BaseEntity<int>
 {
-    public int UserId { get; set; }
+    public int UserHealthProfileId { get; set; }
     public DateTime ReportDate { get; set; } = DateTime.UtcNow;
     public string Summary { get; set; } = string.Empty; // AI tarafından oluşturulmuş metin
     public string? Recommendations { get; set; }        // Öneriler (örneğin: “Şekerini takip et”)

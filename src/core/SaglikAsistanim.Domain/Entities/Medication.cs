@@ -9,7 +9,7 @@ namespace SaglikAsistanim.Domain.Entities;
 
 public sealed class Medication:BaseEntity<int>
 {
-    public int UserId { get; set; }
+    public int UserHealthProfileId { get; set; }
     public string DrugName { get; set; } = string.Empty;
     public string Frequency { get; set; } = string.Empty; // Örn: “Günde 2 defa”
     public DateTime StartDate { get; set; }

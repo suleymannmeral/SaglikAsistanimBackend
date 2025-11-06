@@ -10,7 +10,7 @@ namespace SaglikAsistanim.Domain.Entities;
 
 public sealed class Measurement:BaseEntity<int>
 {
-    public int UserId { get; set; }
+    public int UserHealthProfileId { get; set; }
     public MeasurementType Type { get; set; }  // Enum: BloodPressure, Glucose, 
     public double Value1 { get; set; }         
     public double? Value2 { get; set; }        

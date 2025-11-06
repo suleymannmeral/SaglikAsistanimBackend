@@ -9,7 +9,7 @@ namespace SaglikAsistanim.Domain.Entities;
 
 public sealed class BloodTest:BaseEntity<int>
 {
-    public int UserId { get; set; }
+    public int UserHealthProfileId { get; set; }
     public string FilePath { get; set; } = string.Empty;   // PDF dosya yolu
     public string? AnalysisResult { get; set; }            // AI tarafından üretilen özet metin
     public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
