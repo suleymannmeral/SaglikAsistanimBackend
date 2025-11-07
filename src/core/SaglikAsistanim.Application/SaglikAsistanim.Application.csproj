@@ -11,10 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Measurements\Commands\CreateMeasurement\" />
-    <Folder Include="Features\Measurements\Commands\DeleteMeasurement\" />
-    <Folder Include="Features\Measurements\Commands\UpdateMeasurement\" />
-    <Folder Include="Features\Measurements\Queries\GetAllMeasurement\" />
+    <Folder Include="Features\Measurements\Queries\GetAllMeasurementByUserId\" />
     <Folder Include="Features\Measurements\Queries\GetMeasurementById\" />
     <Folder Include="Features\Medications\Commands\CreateMedication\" />
     <Folder Include="Features\Medications\Commands\DeleteMedication\" />
