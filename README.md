@@ -17,10 +17,9 @@ Yapay zeka algoritmaları bu verileri analiz ederek anormallikleri tespit eder, 
 ## ✨ Temel Özellikler
 
 ### 🔹 Kapsamlı Veri Takibi
-- 🩸 **Tansiyon (Sistolik / Diastolik)**
-- 🍬 **Kan Şekeri (Açlık / Tokluk)**
+- 🩸 **Tansiyon*
+- 🍬 **Kan Şekeri**
 - ⚖️ **Kilo ve Vücut Kitle İndeksi (VKİ)**
-- 💓 **Nabız**
 - 💧 *(Gelecekte eklenecek: Uyku, adım sayısı, su tüketimi vb.)*
 
 ### 🤖 Yapay Zeka Destekli Analiz
