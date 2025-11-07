@@ -11,11 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\HealthReports\Commands\CreateHealthReport\" />
-    <Folder Include="Features\HealthReports\Commands\DeleteHealthReport\" />
-    <Folder Include="Features\HealthReports\Commands\UpdateHealthReport\" />
-    <Folder Include="Features\HealthReports\Queries\GetAllHealthReport\" />
-    <Folder Include="Features\HealthReports\Queries\GetHealthReportById\" />
     <Folder Include="Features\Measurements\Commands\CreateMeasurement\" />
     <Folder Include="Features\Measurements\Commands\DeleteMeasurement\" />
     <Folder Include="Features\Measurements\Commands\UpdateMeasurement\" />
