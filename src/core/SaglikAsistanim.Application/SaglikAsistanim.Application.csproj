@@ -10,4 +10,37 @@
     <ProjectReference Include="..\SaglikAsistanim.Domain\SaglikAsistanim.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\BloodTests\Commands\CreateBloodTest\" />
+    <Folder Include="Features\BloodTests\Commands\DeleteBloodTest\" />
+    <Folder Include="Features\BloodTests\Commands\UpdateBloodTest\" />
+    <Folder Include="Features\BloodTests\Queries\GetAllBloodTest\" />
+    <Folder Include="Features\BloodTests\Queries\GetBloodTestById\" />
+    <Folder Include="Features\BloodTestValues\Commands\CreateBloodTestValue\" />
+    <Folder Include="Features\BloodTestValues\Commands\DeleteBloodTestValue\" />
+    <Folder Include="Features\BloodTestValues\Commands\UpdateBloodTestValue\" />
+    <Folder Include="Features\BloodTestValues\Queries\GetAllBloodTestValue\" />
+    <Folder Include="Features\BloodTestValues\Queries\GetBloodTestById\" />
+    <Folder Include="Features\HealthReports\Commands\CreateHealthReport\" />
+    <Folder Include="Features\HealthReports\Commands\DeleteHealthReport\" />
+    <Folder Include="Features\HealthReports\Commands\UpdateHealthReport\" />
+    <Folder Include="Features\HealthReports\Queries\GetAllHealthReport\" />
+    <Folder Include="Features\HealthReports\Queries\GetHealthReportById\" />
+    <Folder Include="Features\Measurements\Commands\CreateMeasurement\" />
+    <Folder Include="Features\Measurements\Commands\DeleteMeasurement\" />
+    <Folder Include="Features\Measurements\Commands\UpdateMeasurement\" />
+    <Folder Include="Features\Measurements\Queries\GetAllMeasurement\" />
+    <Folder Include="Features\Measurements\Queries\GetMeasurementById\" />
+    <Folder Include="Features\Medications\Commands\CreateMedication\" />
+    <Folder Include="Features\Medications\Commands\DeleteMedication\" />
+    <Folder Include="Features\Medications\Commands\UpdateMedication\" />
+    <Folder Include="Features\Medications\Queries\GetAllMedication\" />
+    <Folder Include="Features\Medications\Queries\GetMedicationById\" />
+    <Folder Include="Features\UserHealthProfiles\Commands\CreateUserHealthProfile\" />
+    <Folder Include="Features\UserHealthProfiles\Commands\DeleteUserProfile\" />
+    <Folder Include="Features\UserHealthProfiles\Commands\UpdateUserHealthProfile\" />
+    <Folder Include="Features\UserHealthProfiles\Queries\GetAllUserHealthProfile\" />
+    <Folder Include="Features\UserHealthProfiles\Queries\GetUserHealthProfileById\" />
+  </ItemGroup>
+
 </Project>
