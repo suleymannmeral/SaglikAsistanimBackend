@@ -11,11 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\BloodTests\Commands\CreateBloodTest\" />
-    <Folder Include="Features\BloodTests\Commands\DeleteBloodTest\" />
-    <Folder Include="Features\BloodTests\Commands\UpdateBloodTest\" />
-    <Folder Include="Features\BloodTests\Queries\GetAllBloodTest\" />
-    <Folder Include="Features\BloodTests\Queries\GetBloodTestById\" />
     <Folder Include="Features\BloodTestValues\Commands\CreateBloodTestValue\" />
     <Folder Include="Features\BloodTestValues\Commands\DeleteBloodTestValue\" />
     <Folder Include="Features\BloodTestValues\Commands\UpdateBloodTestValue\" />
