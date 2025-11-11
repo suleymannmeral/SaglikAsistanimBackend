@@ -1,3 +1,3 @@
 ﻿namespace SaglikAsistanim.Application.Features.HealthReports.Queries.GetUserHealthReportById;
 
-public record GetUserHealthReportByIdQuery();
+public record GetHealthReportByIdQuery();

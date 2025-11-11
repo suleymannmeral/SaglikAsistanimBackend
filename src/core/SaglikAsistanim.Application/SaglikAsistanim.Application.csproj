@@ -7,20 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Features\UserHealthProfiles\Commands\UpdateUserHealthProfile\UpdateUserHealthProfileCommand.cs~RF911b51d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SaglikAsistanim.Domain\SaglikAsistanim.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Features\Measurements\Queries\GetAllMeasurementByUserId\" />
     <Folder Include="Features\Measurements\Queries\GetMeasurementById\" />
-    <Folder Include="Features\Medications\Commands\CreateMedication\" />
-    <Folder Include="Features\Medications\Commands\DeleteMedication\" />
-    <Folder Include="Features\Medications\Commands\UpdateMedication\" />
     <Folder Include="Features\Medications\Queries\GetAllMedication\" />
     <Folder Include="Features\Medications\Queries\GetMedicationById\" />
-    <Folder Include="Features\UserHealthProfiles\Commands\CreateUserHealthProfile\" />
-    <Folder Include="Features\UserHealthProfiles\Commands\DeleteUserProfile\" />
-    <Folder Include="Features\UserHealthProfiles\Commands\UpdateUserHealthProfile\" />
     <Folder Include="Features\UserHealthProfiles\Queries\GetAllUserHealthProfile\" />
     <Folder Include="Features\UserHealthProfiles\Queries\GetUserHealthProfileById\" />
   </ItemGroup>
