@@ -1,5 +1,67 @@
-﻿namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
+﻿using MediatR;
+using SaglikAsistanim.Application.Contracts.Identity;
+using SaglikAsistanim.Application.Contracts.Persistence;
+using SaglikAsistanim.Domain.Entities;
+using System.Transactions;
+
+namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
 
 public sealed class CreateUserHealthProfileCommandHandler
+    : IRequestHandler<CreateUserHealthProfileCommand, ServiceResult<CreateUserHealthProfileResponse>>
 {
+    private readonly IUserService _userService;
+    private readonly IUserHealthProfileRepository _userHealthProfileRepository;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public CreateUserHealthProfileCommandHandler(
+        IUserService userService,
+        IUserHealthProfileRepository userHealthProfileRepository,
+        IUnitOfWork unitOfWork)
+    {
+        _userService = userService;
+        _userHealthProfileRepository = userHealthProfileRepository;
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<ServiceResult<CreateUserHealthProfileResponse>> Handle(
+        CreateUserHealthProfileCommand request,
+        CancellationToken cancellationToken)
+    {
+        // TransactionScope kullanıyoruz, async akış için Enabled
+        using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+
+        try
+        {
+            // User oluştur (email ve username kontrolü zaten UserService içinde)
+            var userResult = await _userService.CreateUser(request.userRequest);
+            if (!userResult.IsSuccess)
+                return ServiceResult<CreateUserHealthProfileResponse>.Fail(userResult.ErrorMessage!);
+
+            string userId = userResult.Data!.userId;
+
+            // UserHealthProfile oluştur
+            var userHealthProfile = new UserHealthProfile
+            {
+                ApplicationUserId = userId,
+                Weight = request.Weight,
+                Height = request.Height,
+                BloodType = request.BloodType,
+                LastUpdated = DateTime.UtcNow
+            };
+
+            await _userHealthProfileRepository.AddAsync(userHealthProfile);
+            await _unitOfWork.SaveChangesAsync();
+
+            //Tüm işlemler başarılı → commit
+            scope.Complete();
+
+            return ServiceResult<CreateUserHealthProfileResponse>.Success(
+                new CreateUserHealthProfileResponse(userHealthProfile.Id));
+        }
+        catch (Exception ex)
+        {
+            // rollback otomatik scope.Dispose() ile yapılır
+            return ServiceResult<CreateUserHealthProfileResponse>.Fail("İşlem başarısız: " + ex.Message);
+        }
+    }
 }

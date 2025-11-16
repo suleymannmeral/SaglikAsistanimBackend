@@ -14,6 +14,6 @@ public sealed class Medication:BaseEntity<int>
     public string Frequency { get; set; } = string.Empty; // Örn: “Günde 2 defa”
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
-    public bool IsActive => !EndDate.HasValue || EndDate > DateTime.UtcNow;
+    public bool IsActive {  get; set; }
 
 }

@@ -1,4 +1,11 @@
-﻿namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
+﻿using MediatR;
+using SaglikAsistanim.Application.Contracts.Identity;
 
-public sealed record CreateUserHealthProfileCommand();
+namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
+
+public sealed record CreateUserHealthProfileCommand(double Weight,
+    double Height,
+    string BloodType,
+    DateTime LastUpdated,
+    CreateUserRequest userRequest):IRequest<ServiceResult<CreateUserHealthProfileResponse>>;
 

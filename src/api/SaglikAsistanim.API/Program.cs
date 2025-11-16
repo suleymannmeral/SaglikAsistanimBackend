@@ -1,9 +1,16 @@
+using SaglikAsistanim.API.Extensions;
+using SaglikAsistanim.Application.Extensions;
+using SaglikAsistanim.Identity;
+using SaglikAsistanim.Persistence.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddPersistenceExt(builder.Configuration).AddIdentityExt().AddApplicationExt().AddUserExt(builder.Configuration);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

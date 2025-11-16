@@ -9,8 +9,12 @@ namespace SaglikAsistanim.Identity.Models;
 
 public class ApplicationUser : IdentityUser<string>
 {
+    public ApplicationUser()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
     public string FirstName { get; set; } = default!;
     public string LastName { get; set; } = default!;
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
     public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }
