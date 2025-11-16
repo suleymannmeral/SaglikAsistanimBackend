@@ -14,13 +14,4 @@
     <ProjectReference Include="..\SaglikAsistanim.Domain\SaglikAsistanim.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Measurements\Queries\GetAllMeasurementByUserId\" />
-    <Folder Include="Features\Measurements\Queries\GetMeasurementById\" />
-    <Folder Include="Features\Medications\Queries\GetAllMedication\" />
-    <Folder Include="Features\Medications\Queries\GetMedicationById\" />
-    <Folder Include="Features\UserHealthProfiles\Queries\GetAllUserHealthProfile\" />
-    <Folder Include="Features\UserHealthProfiles\Queries\GetUserHealthProfileById\" />
-  </ItemGroup>
-
 </Project>
