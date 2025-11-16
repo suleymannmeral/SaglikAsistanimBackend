@@ -39,7 +39,7 @@ public sealed class CreateUserHealthProfileCommandHandler
 
             string userId = userResult.Data!.userId;
 
-            // UserHealthProfile oluştur
+            // create UserHealthProfile instance
             var userHealthProfile = new UserHealthProfile
             {
                 ApplicationUserId = userId,
@@ -60,7 +60,7 @@ public sealed class CreateUserHealthProfileCommandHandler
         }
         catch (Exception ex)
         {
-            // rollback otomatik scope.Dispose() ile yapılır
+            //scope.Dispose()  otomatik
             return ServiceResult<CreateUserHealthProfileResponse>.Fail("İşlem başarısız: " + ex.Message);
         }
     }

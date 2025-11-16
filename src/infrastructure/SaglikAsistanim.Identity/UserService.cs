@@ -28,23 +28,22 @@ public sealed class UserService(UserManager<ApplicationUser> userManager) : IUse
 
     public async Task<ServiceResult<CreateUserResponse>> CreateUser(CreateUserRequest request)
     {
-        // 1) Email veya UserName daha önce var mı kontrol et
+        
         var existByEmail = await userManager.FindByEmailAsync(request.Email);
         if (existByEmail != null)
-            return ServiceResult<CreateUserResponse>.Fail("Email Mevcut");
+            return ServiceResult<CreateUserResponse>.Fail("Email Mevcut!");
 
         var existByUserName = await userManager.FindByNameAsync(request.UserName);
         if (existByUserName != null)
-            return ServiceResult<CreateUserResponse>.Fail("Kullanıcı adı mevcut");
+            return ServiceResult<CreateUserResponse>.Fail("Kullanıcı adı mevcut!");
 
         var existPhoneNumber = await CheckIsPhoneNumberExist(request.PhoneNumber);
-
         if(existPhoneNumber.Data)
-            return ServiceResult<CreateUserResponse>.Fail("Teelfon sisteme kayıltı");
+            return ServiceResult<CreateUserResponse>.Fail("Bu telefon numarası sisteme kayıtlı!");
 
 
 
-        // 2) ApplicationUser nesnesini doldur
+        // create applicationUser instance
         var user = new ApplicationUser
         {
             FirstName = request.FirstName,
@@ -55,12 +54,12 @@ public sealed class UserService(UserManager<ApplicationUser> userManager) : IUse
             PhoneNumber = request.PhoneNumber
         };
 
-        // 3) UserManager ile kullanıcı oluştur
+        // 3) create user
         var result = await userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)
         {
-            // Identity hatalarını ServiceResult formatında geri döndür
+            
             var errors = result.Errors.Select(x => x.Description).ToList();
             return ServiceResult<CreateUserResponse>.Fail(errors);
         }

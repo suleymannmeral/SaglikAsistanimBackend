@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SaglikAsistanim.API.Abstraction;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
@@ -19,10 +18,5 @@ public class UserHealthProfilesController : BaseApiController
     CreateUserHealthProfileCommand request,
     CancellationToken cancellationToken)
     => CreateActionResult(await _mediator.Send(request, cancellationToken));
-
-
-
-
-
 
 }
