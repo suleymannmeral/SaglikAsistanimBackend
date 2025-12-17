@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaglikAsistanim.Domain.Entities.Common;
 
-public class BaseEntity<T>
+public abstract class BaseEntity<TId>
 {
-    public T Id { get; set; } = default!;
+    public TId Id { get; protected set; } = default!;
 }

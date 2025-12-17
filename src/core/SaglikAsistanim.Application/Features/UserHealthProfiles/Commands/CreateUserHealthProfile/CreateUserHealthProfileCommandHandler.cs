@@ -32,7 +32,7 @@ public sealed class CreateUserHealthProfileCommandHandler
 
         try
         {
-            // User oluştur (email ve username kontrolü zaten UserService içinde)
+            // User oluştur 
             var userResult = await _userService.CreateUser(request.userRequest);
             if (!userResult.IsSuccess)
                 return ServiceResult<CreateUserHealthProfileResponse>.Fail(userResult.ErrorMessage!);

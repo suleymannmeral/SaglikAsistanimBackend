@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SaglikAsistanim.Application;
 using SaglikAsistanim.Application.Contracts.Identity;
 using SaglikAsistanim.Identity.Models;
+using System.Net;
 
 namespace SaglikAsistanim.Identity;
 
@@ -72,4 +73,29 @@ public sealed class UserService(UserManager<ApplicationUser> userManager) : IUse
 
         return ServiceResult<CreateUserResponse>.Success(response);
     }
+
+    public async Task<ServiceResult<bool>> IsExistAsync(string userId)
+    {
+        var response= await userManager.Users.AnyAsync(u => u.Id==userId);
+
+        return ServiceResult<bool>.Success(response);
+
+    }
+
+
+    public async Task<ServiceResult> DeleteAsync(string userId)
+    {
+        var user = await userManager.FindByIdAsync(userId);
+
+        if (user is null)
+            return ServiceResult.Fail("Kullanıcı bulunamadı", HttpStatusCode.NotFound);
+
+        await userManager.DeleteAsync(user);
+
+        return ServiceResult.Success(HttpStatusCode.NoContent);
+    }
 }
+
+
+
+    

@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace SaglikAsistanim.Persistence;
 
-public class GenericRepository<T, TId>(AppDbContext context) : IGenericRepository<T, TId> where T : BaseEntity<TId> where TId : struct
+public class GenericRepository<T, TId>(AppDbContext context) : IGenericRepository<T, TId> where T : BaseEntity<TId> 
 {
     protected AppDbContext Context = context;
 
@@ -27,7 +27,7 @@ public class GenericRepository<T, TId>(AppDbContext context) : IGenericRepositor
 
     public Task<List<T>> GetAllPagedAsync(int pageNumber, int pageSize) => _dbSet.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
-    public ValueTask<T?> GetByIdAsync(int id) => _dbSet.FindAsync(id);
+    public ValueTask<T?> GetByIdAsync(TId id) => _dbSet.FindAsync(id);
 
     public void Update(T entity) => _dbSet.Update(entity);
 

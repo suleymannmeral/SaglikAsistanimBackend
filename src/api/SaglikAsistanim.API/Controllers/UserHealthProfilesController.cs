@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SaglikAsistanim.API.Abstraction;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
+using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
 
 namespace SaglikAsistanim.API.Controllers;
 
@@ -18,5 +19,18 @@ public class UserHealthProfilesController : BaseApiController
     CreateUserHealthProfileCommand request,
     CancellationToken cancellationToken)
     => CreateActionResult(await _mediator.Send(request, cancellationToken));
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(
+     string id,
+     CancellationToken cancellationToken)
+    {
+        var command = new DeleteUserHealthProfileCommand(id);
+
+        return CreateActionResult(
+            await _mediator.Send(command, cancellationToken)
+        );
+    }
+
 
 }

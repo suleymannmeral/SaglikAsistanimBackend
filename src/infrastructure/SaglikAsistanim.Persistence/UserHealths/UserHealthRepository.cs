@@ -6,6 +6,6 @@ using SaglikAsistanim.Persistence.Context;
 
 namespace SaglikAsistanim.Persistence.Users;
 
-public sealed class UserHealthProfileRepository(AppDbContext context):GenericRepository<UserHealthProfile,int>(context), IUserHealthProfileRepository
+public sealed class UserHealthProfileRepository(AppDbContext context):GenericRepository<UserHealthProfile,string>(context), IUserHealthProfileRepository
 {
 }
