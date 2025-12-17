@@ -46,7 +46,6 @@ public sealed class CreateUserHealthProfileCommandHandler
                 Weight = request.Weight,
                 Height = request.Height,
                 BloodType = request.BloodType,
-                LastUpdated = DateTime.UtcNow
             };
 
             await _userHealthProfileRepository.AddAsync(userHealthProfile);

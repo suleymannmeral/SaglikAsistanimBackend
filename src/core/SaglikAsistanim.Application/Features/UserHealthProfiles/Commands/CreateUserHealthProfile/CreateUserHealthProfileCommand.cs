@@ -6,6 +6,5 @@ namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.Creat
 public sealed record CreateUserHealthProfileCommand(double Weight,
     double Height,
     string BloodType,
-    DateTime LastUpdated,
     CreateUserRequest userRequest):IRequest<ServiceResult<CreateUserHealthProfileResponse>>;
 

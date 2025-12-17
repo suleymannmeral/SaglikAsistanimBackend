@@ -12,8 +12,8 @@ using SaglikAsistanim.Persistence.Context;
 namespace SaglikAsistanim.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251116090125_AddInitialMigrate")]
-    partial class AddInitialMigrate
+    [Migration("20251217070814_mfi")]
+    partial class mfi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -197,11 +197,8 @@ namespace SaglikAsistanim.Persistence.Migrations
 
             modelBuilder.Entity("SaglikAsistanim.Domain.Entities.UserHealthProfile", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
@@ -213,9 +210,6 @@ namespace SaglikAsistanim.Persistence.Migrations
 
                     b.Property<double>("Height")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");
@@ -237,8 +231,8 @@ namespace SaglikAsistanim.Persistence.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("DateOfBirth")
+                        .HasColumnType("date");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)

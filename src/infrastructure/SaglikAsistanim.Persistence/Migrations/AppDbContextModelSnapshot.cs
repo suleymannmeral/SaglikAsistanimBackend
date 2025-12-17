@@ -194,11 +194,8 @@ namespace SaglikAsistanim.Persistence.Migrations
 
             modelBuilder.Entity("SaglikAsistanim.Domain.Entities.UserHealthProfile", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
@@ -210,9 +207,6 @@ namespace SaglikAsistanim.Persistence.Migrations
 
                     b.Property<double>("Height")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("Weight")
                         .HasColumnType("float");

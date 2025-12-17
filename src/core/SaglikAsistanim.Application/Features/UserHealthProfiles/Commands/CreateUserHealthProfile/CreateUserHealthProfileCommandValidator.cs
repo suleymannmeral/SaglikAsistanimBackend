@@ -19,10 +19,7 @@ public sealed class CreateUserHealthProfileCommandValidator
             .NotEmpty().WithMessage("Kan grubu boş olamaz.")
             .Matches("^(A|B|AB|O)[+-]$").WithMessage("Geçerli bir kan grubu giriniz (Ör: A+, 0-, AB+).");
 
-        RuleFor(x => x.LastUpdated)
-            .LessThanOrEqualTo(DateTime.UtcNow)
-            .WithMessage("LastUpdated gelecekte olamaz.");
-
+      
         // Nested User validator
         RuleFor(x => x.userRequest)
             .NotNull().WithMessage("Kullanıcı bilgileri zorunludur.")

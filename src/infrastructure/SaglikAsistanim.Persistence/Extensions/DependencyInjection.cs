@@ -35,7 +35,7 @@ public static class DependencyInjection
 
     private static void AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IUserHealthProfileRepository,UserHealthProfileRepository>();
+        services.AddScoped<IUserHealthProfileRepository, UserHealthProfileRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
   
     }

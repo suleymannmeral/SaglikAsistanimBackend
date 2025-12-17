@@ -1,41 +1,50 @@
 ﻿using MediatR;
+using SaglikAsistanim.Application;
 using SaglikAsistanim.Application.Contracts.Identity;
 using SaglikAsistanim.Application.Contracts.Persistence;
+using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
+using SaglikAsistanim.Domain.Entities;
 using System.Net;
 using System.Transactions;
 
-namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
-
 public sealed class DeleteUserHealthProfileCommandHandler(
-    IUserService userService,
     IUserHealthProfileRepository userHealthRepository,
-    IUnitOfWork unitOfWork) : IRequestHandler<
-    DeleteUserHealthProfileCommand,
-    ServiceResult>
+    IUserService userService,
+    IUnitOfWork unitOfWork)
+    : IRequestHandler<DeleteUserHealthProfileCommand, ServiceResult>
 {
-    public async Task<ServiceResult> Handle(DeleteUserHealthProfileCommand request, CancellationToken cancellationToken)
+    public async Task<ServiceResult> Handle(
+        DeleteUserHealthProfileCommand request,
+        CancellationToken cancellationToken)
     {
-        var userHealthProfile = await userHealthRepository.GetByIdAsync(request.Id);
-
-        if (userHealthProfile is null)
+        var profile = await GetProfileOrNullAsync(request.Id);
+        if (profile is null)
             return ServiceResult.Fail("Profil bulunamadı.", HttpStatusCode.NotFound);
 
-        var userExist= await userService.IsExistAsync(request.Id);
+        var userExistsResult = await CheckUserExistsAsync(profile.ApplicationUserId);
+        if (!userExistsResult)
+            return ServiceResult.Fail("Kullanıcı bulunamadı.", HttpStatusCode.NotFound);
 
-        if(!userExist.Data)
-            return ServiceResult.Fail("Kullanıcı Bulunamadı",HttpStatusCode.NotFound);
-
-
-        using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-        {
-            await userService.DeleteAsync(userHealthProfile.ApplicationUserId);  // UserManager işlemi
-            userHealthRepository.Delete(userHealthProfile);
-            await unitOfWork.SaveChangesAsync();          // Repository işlemi
-
-            scope.Complete(); // Her ikisi de başarılıysa commit
-        }
+        await DeleteUserAndProfileAsync(profile);
 
         return ServiceResult.Success(HttpStatusCode.NoContent);
+    }
 
+    private async Task<UserHealthProfile?> GetProfileOrNullAsync(string id)
+        => await userHealthRepository.GetByIdAsync(id);
+    private async Task<bool> CheckUserExistsAsync(string applicationUserId)
+    {
+        var result = await userService.IsExistAsync(applicationUserId);
+        return result.Data;
+    }
+    private async Task DeleteUserAndProfileAsync(UserHealthProfile profile)
+    {
+        using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+
+        await userService.DeleteAsync(profile.ApplicationUserId);
+        userHealthRepository.Delete(profile);
+        await unitOfWork.SaveChangesAsync();
+
+        scope.Complete();
     }
 }
