@@ -1,3 +1,6 @@
-﻿namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Queries.GetUserHealthProfileDetail;
+﻿using MediatR;
 
-public sealed record GetUserHealthProfileDetailQuery();
+namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Queries.GetUserHealthProfileDetail;
+
+public sealed record GetUserHealthProfileDetailQuery(string Id)
+    : IRequest<ServiceResult<GetUserHealthProfileDetailQueryResponse>>;

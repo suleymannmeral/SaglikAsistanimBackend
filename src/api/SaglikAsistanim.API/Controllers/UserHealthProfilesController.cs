@@ -5,6 +5,7 @@ using SaglikAsistanim.API.Contracts.Requests;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.UpdateUserHealthProfile;
+using SaglikAsistanim.Application.Features.UserHealthProfiles.Queries.GetUserHealthProfileDetail;
 
 namespace SaglikAsistanim.API.Controllers;
 
@@ -54,6 +55,20 @@ public class UserHealthProfilesController : BaseApiController
         var result = await _mediator.Send(command, cancellationToken);
         return CreateActionResult(result);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(
+    string id,
+    CancellationToken cancellationToken)
+    {
+        var query = new GetUserHealthProfileDetailQuery(id);
+
+        var result = await _mediator.Send(query, cancellationToken);
+        return CreateActionResult(result);
+    }
+
+
+
 
 
 }

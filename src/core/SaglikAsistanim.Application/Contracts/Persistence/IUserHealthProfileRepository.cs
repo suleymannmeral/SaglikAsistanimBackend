@@ -9,4 +9,5 @@ namespace SaglikAsistanim.Application.Contracts.Persistence;
 
 public interface IUserHealthProfileRepository:IGenericRepository<UserHealthProfile,string>
 {
+    
 }

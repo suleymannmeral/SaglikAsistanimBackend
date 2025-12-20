@@ -95,8 +95,34 @@ public sealed class UserService(UserManager<ApplicationUser> userManager) : IUse
 
         return ServiceResult.Success(HttpStatusCode.NoContent);
     }
+
+    public async Task<ServiceResult<UserDto>> GetUserByIdAsync(string userId)
+    {
+        var user = await userManager.Users
+            .AsNoTracking()
+            .Where(u => u.Id == userId.ToString())
+            .Select(u => new UserDto(
+               u.FirstName,
+               u.LastName,
+               u.DateOfBirth,
+               u.UserName!,
+               u.PhoneNumber!,
+               u.Email!
+            ))
+            .FirstOrDefaultAsync();
+
+        if (user is null)
+            return ServiceResult<UserDto>.Fail(
+                "User not found",
+                HttpStatusCode.NotFound
+            );
+
+        return ServiceResult<UserDto>.Success(user);
+    }
+
+  
 }
 
 
 
-    
+

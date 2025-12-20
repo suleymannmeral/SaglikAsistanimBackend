@@ -8,6 +8,8 @@ public interface IUserService
     Task<bool>CheckIsUserExistByUserName(string userName);
     Task<ServiceResult<bool>> IsExistAsync(string userId);
     Task<ServiceResult> DeleteAsync(string userId);
+    Task<ServiceResult<UserDto>> GetUserByIdAsync(string userId);
+
 
 
 }
