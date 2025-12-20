@@ -1,8 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SaglikAsistanim.API.Abstraction;
+using SaglikAsistanim.API.Contracts.Requests;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
 using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
+using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.UpdateUserHealthProfile;
 
 namespace SaglikAsistanim.API.Controllers;
 
@@ -30,6 +32,27 @@ public class UserHealthProfilesController : BaseApiController
         return CreateActionResult(
             await _mediator.Send(command, cancellationToken)
         );
+    }
+
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+       string id,
+       [FromBody] UpdateUserHealthProfileRequest request, // Body'den sadece gerekli data gelir
+       CancellationToken cancellationToken)
+    {
+        // Request + Route ID = Command
+        var command = new UpdateUserHealthProfileCommand(
+            Id: id,
+            Weight: request.Weight,
+            Height: request.Height,
+            BloodType: request.BloodType,
+            updateUserRequest:request.UpdateUserRequest
+           
+        );
+
+        var result = await _mediator.Send(command, cancellationToken);
+        return CreateActionResult(result);
     }
 
 

@@ -1,4 +1,6 @@
-﻿namespace SaglikAsistanim.Application.Contracts.Identity;
+﻿using SaglikAsistanim.Application.Features.Users;
+
+namespace SaglikAsistanim.Application.Contracts.Identity;
 
 public interface IUserService
 {

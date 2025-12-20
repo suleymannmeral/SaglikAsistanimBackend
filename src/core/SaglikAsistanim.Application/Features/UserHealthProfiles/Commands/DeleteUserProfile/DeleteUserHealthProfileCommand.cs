@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
 
 namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.DeleteUserProfile;
 

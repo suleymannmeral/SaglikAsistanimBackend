@@ -1,4 +1,4 @@
-﻿namespace SaglikAsistanim.Application.Contracts.Identity;
+﻿namespace SaglikAsistanim.Application.Features.Users;
 
 public sealed record CreateUserRequest(string FirstName,
  string LastName,

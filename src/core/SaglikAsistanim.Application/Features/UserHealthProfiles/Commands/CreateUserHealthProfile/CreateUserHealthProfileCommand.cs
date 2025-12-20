@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SaglikAsistanim.Application.Contracts.Identity;
+using SaglikAsistanim.Application.Features.Users;
 
 namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.CreateUserHealthProfile;
 

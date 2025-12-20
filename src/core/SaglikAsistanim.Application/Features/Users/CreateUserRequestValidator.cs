@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using SaglikAsistanim.Application.Contracts.Identity;
+using SaglikAsistanim.Application.Features.Users;
 
 public sealed class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
 {

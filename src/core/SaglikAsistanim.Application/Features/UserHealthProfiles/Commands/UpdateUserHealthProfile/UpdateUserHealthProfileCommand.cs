@@ -1,5 +1,13 @@
-﻿namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.UpdateUserHealthProfile;
+﻿using MediatR;
+using SaglikAsistanim.Application.Features.Users;
 
-public sealed record UpdateUserHealthProfileCommand();
+namespace SaglikAsistanim.Application.Features.UserHealthProfiles.Commands.UpdateUserHealthProfile;
+
+public sealed record UpdateUserHealthProfileCommand(string Id,
+    double Weight,
+    double Height,
+    string BloodType,
+    UpdateUserRequest updateUserRequest
+    ) : IRequest<ServiceResult>;
 
 

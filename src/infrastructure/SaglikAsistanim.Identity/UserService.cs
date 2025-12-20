@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SaglikAsistanim.Application;
 using SaglikAsistanim.Application.Contracts.Identity;
+using SaglikAsistanim.Application.Features.Users;
 using SaglikAsistanim.Identity.Models;
 using System.Net;
 
