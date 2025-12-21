@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SaglikAsistanim.Ai\SaglikAsistanim.Ai.csproj" />
     <ProjectReference Include="..\..\infrastructure\SaglikAsistanim.Persistence\SaglikAsistanim.Persistence.csproj" />
   </ItemGroup>
 

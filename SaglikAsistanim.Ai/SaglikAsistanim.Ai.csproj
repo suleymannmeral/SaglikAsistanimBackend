@@ -9,5 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\src\core\SaglikAsistanim.Application\SaglikAsistanim.Application.csproj" />
   </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	</ItemGroup>
 </Project>

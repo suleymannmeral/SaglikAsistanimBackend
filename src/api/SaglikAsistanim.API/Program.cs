@@ -1,4 +1,6 @@
+using SaglikAsistanim.Ai;
 using SaglikAsistanim.API.Extensions;
+using SaglikAsistanim.API.SaglikAsistanim.Application.Settings;
 using SaglikAsistanim.Application.Extensions;
 using SaglikAsistanim.Identity;
 using SaglikAsistanim.Persistence.Extensions;
@@ -9,10 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddPersistenceExt(builder.Configuration).AddIdentityExt().AddApplicationExt().AddUserExt(builder.Configuration);
+builder.Services.AddPersistenceExt(builder.Configuration).AddIdentityExt().AddApplicationExt().AddUserExt(builder.Configuration).AddAiExt(builder.Configuration);
+builder.Services.AddHttpClient();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen();// Bu sat?r? builder.Build() den önce ekle
 
 var app = builder.Build();
 

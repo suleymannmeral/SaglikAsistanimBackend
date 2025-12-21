@@ -1,5 +1,5 @@
-﻿namespace SaglikAsistanim.Application.Features.HealthReports.Commands.CreateHealthReport;
+﻿using MediatR;
 
-public record CreateHealthReportCommand
-{
-}
+namespace SaglikAsistanim.Application.Features.HealthReports.Commands.CreateHealthReport;
+
+public record CreateHealthReportCommand(string Prompt) : IRequest<ServiceResult<string>>;

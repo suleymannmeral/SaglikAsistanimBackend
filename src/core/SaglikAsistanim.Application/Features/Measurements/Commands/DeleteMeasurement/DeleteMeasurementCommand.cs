@@ -1,5 +1,5 @@
-﻿namespace SaglikAsistanim.Application.Features.Measurements.Commands.DeleteMeasurement;
+﻿using MediatR;
 
-public sealed record DeleteMeasurementCommand
-{
-}
+namespace SaglikAsistanim.Application.Features.Measurements.Commands.DeleteMeasurement;
+
+public sealed record DeleteMeasurementCommand(int Id):IRequest<ServiceResult>;
