@@ -1,5 +1,11 @@
-﻿namespace SaglikAsistanim.Application.Features.BloodTests.Commands.CreateBloodTest;
+﻿using FluentValidation;
 
-public sealed class CreateBloodTestCommandValidator
+namespace SaglikAsistanim.Application.Features.BloodTests.Commands.CreateBloodTest;
+
+public sealed class CreateBloodTestCommandValidator : AbstractValidator<CreateBloodTestCommand>
 {
+    public CreateBloodTestCommandValidator()
+    {
+
+    }
 }

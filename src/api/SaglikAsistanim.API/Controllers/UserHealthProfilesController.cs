@@ -9,14 +9,9 @@ using SaglikAsistanim.Application.Features.UserHealthProfiles.Queries.GetUserHea
 
 namespace SaglikAsistanim.API.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class UserHealthProfilesController : BaseApiController
-{
-    public UserHealthProfilesController(IMediator mediator) : base(mediator)
-    {
-    }
 
+public sealed class UserHealthProfilesController(IMediator mediator) : BaseApiController(mediator)
+{
     [HttpPost]
     public async Task<IActionResult> Create(
     CreateUserHealthProfileCommand request,
@@ -39,7 +34,7 @@ public class UserHealthProfilesController : BaseApiController
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(
        string id,
-       [FromBody] UpdateUserHealthProfileRequest request, // Body'den sadece gerekli data gelir
+       [FromBody] UpdateUserHealthProfileRequest request,
        CancellationToken cancellationToken)
     {
         // Request + Route ID = Command

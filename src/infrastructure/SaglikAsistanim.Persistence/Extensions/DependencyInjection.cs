@@ -2,7 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SaglikAsistanim.Application.Contracts.Persistence;
+using SaglikAsistanim.Domain.Entities;
+using SaglikAsistanim.Persistence.BloodTests;
 using SaglikAsistanim.Persistence.Context;
+using SaglikAsistanim.Persistence.Measurements;
 using SaglikAsistanim.Persistence.Options;
 using SaglikAsistanim.Persistence.Users;
 
@@ -36,6 +39,8 @@ public static class DependencyInjection
     private static void AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IUserHealthProfileRepository, UserHealthProfileRepository>();
+        services.AddScoped<IBloodTestRepository,BloodTestRepository>();
+        services.AddScoped<IMeasurementRepository, MeasurementRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
   
     }

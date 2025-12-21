@@ -1,11 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SaglikAsistanim.API.Abstraction;
+using SaglikAsistanim.Application.Features.BloodTests.Commands.CreateBloodTest;
 
-namespace SaglikAsistanim.API.Controllers
+namespace SaglikAsistanim.API.Controllers;
+
+
+public sealed class BloodTestsController(IMediator mediator) : BaseApiController(mediator)
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BloodTestsController : ControllerBase
-    {
-    }
+    [HttpPost]
+    public async Task<IActionResult> Create(
+    CreateBloodTestCommand request,
+    CancellationToken cancellationToken)
+    => CreateActionResult(await _mediator.Send(request, cancellationToken));
+
+
+ 
+
+
 }
