@@ -1,3 +1,5 @@
-﻿namespace SaglikAsistanim.Application.Features.Measurements.Queries.GetUserMesurementDetail;
+﻿using MediatR;
 
-public sealed record GetUserMeasurementDetailQuery();
+namespace SaglikAsistanim.Application.Features.Measurements.Queries.GetUserMesurementDetail;
+
+public sealed record GetUserMeasurementDetailQuery(int Id) : IRequest<ServiceResult<GetUserMeasurementDetailQueryResponse>>;

@@ -5,6 +5,8 @@ using SaglikAsistanim.API.Contracts.Requests;
 using SaglikAsistanim.Application.Features.Measurements.Commands.CreateMeasurement;
 using SaglikAsistanim.Application.Features.Measurements.Commands.DeleteMeasurement;
 using SaglikAsistanim.Application.Features.Measurements.Commands.UpdateMeasurement;
+using SaglikAsistanim.Application.Features.Measurements.Queries.GetUserMesurementDetail;
+using SaglikAsistanim.Application.Features.UserHealthProfiles.Queries.GetUserHealthProfileDetail;
 
 namespace SaglikAsistanim.API.Controllers;
 
@@ -52,6 +54,18 @@ public class MeasurementController(IMediator mediator) : BaseApiController(media
         var result = await _mediator.Send(command, cancellationToken);
         return CreateActionResult(result);
     }
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(
+    int id,
+    CancellationToken cancellationToken)
+    {
+        var query = new GetUserMeasurementDetailQuery(id);
+
+        var result = await _mediator.Send(query, cancellationToken);
+        return CreateActionResult(result);
+    }
+
 
 
 
